@@ -1,33 +1,31 @@
 import s from './SearchBar.module.css';
 import { BiSearch } from 'react-icons/bi';
-import { Component } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types'
 
-class SearchBar extends Component {
-    state = {
-            imageName: '',
-    }
-    
-    handleNameChange = (event) => {
-        this.setState({ imageName: event.currentTarget.value.toLowerCase().trim() });
+
+export default function SearchBar({ onSubmit }) {
+    const [imageName, setImageName] = useState('');
+
+    const handleNameChange = (event) => {
+         setImageName(event.currentTarget.value.toLowerCase().trim())
     }
 
-    handleSubmit = event => {
+    const handleSubmit = event => {
         event.preventDefault();
 
-        if (this.state.imageName === '') {
+        if (imageName === '') {
             return;
         }
 
-        this.props.onSubmit(this.state.imageName);
-
-        this.setState({ imageName: '' });
+        onSubmit(imageName);
+        setImageName('');
     }
 
-    render() {
-        return (
-            <header className={s.SearchBar}>
-                <form onSubmit={this.handleSubmit} className={s.SearchForm}>
+
+    return (
+        <header className={s.SearchBar}>
+                <form onSubmit={handleSubmit} className={s.SearchForm}>
                     <button type="submit" className={s.Button}>
                         {/* <span className={s.Label}> */}
                         <BiSearch size='2em' />
@@ -37,20 +35,19 @@ class SearchBar extends Component {
                     <input
                         className={s.Input}
                         type="text"
-                        // autocomplete="off"
-                        // autofocus
-                        value={this.state.imageName}
+                        autocomplete="off"
+                        autofocus
+                        value={imageName}
                         placeholder="Search images and photos"
-                        onChange={this.handleNameChange}
+                        onChange={handleNameChange}
                     />
                 </form>
             </header>
 
         )
-    }
 }
 
-export default SearchBar;
+
 
 SearchBar.propTypes = {
     imageName: PropTypes.string.isRequired,
