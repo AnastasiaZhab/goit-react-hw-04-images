@@ -7,19 +7,26 @@ const ImageGallery = ({ image, onClick }) => {
     const arrayImages = image;
 
     return (
-        <ul className={s.ImageGallery}>
-            {arrayImages.map(({id, webformatURL, alt, largeImageURL}) => (
-                <ImageGalleryItem onClick={onClick} id={id} key={id} src={webformatURL} alt={alt} largeImageURL={largeImageURL} />
-            )
-            )}
+        <>
+            <ul className={s.ImageGallery}>
+                {arrayImages.map(({id, webformatURL, alt, largeImageURL}) => (
+                    <ImageGalleryItem key={id} onClick={onClick} id={id} src={webformatURL} alt={alt} largeImageURL={largeImageURL} />
+                )
+                )}
 
-        </ul>
+            </ul>
+        </>
     )
 };
 
 export default ImageGallery;
 
 ImageGallery.propTypes = {
-    image: PropTypes.arrayOf(PropTypes.shape).isRequired,
+    image: PropTypes.arrayOf(PropTypes.exact({
+        id: PropTypes.number.isRequired,
+        largeImageURL: PropTypes.string,
+        webformatURL: PropTypes.string,
+        alt: PropTypes.string
+    })),
     onClick: PropTypes.func,
 }

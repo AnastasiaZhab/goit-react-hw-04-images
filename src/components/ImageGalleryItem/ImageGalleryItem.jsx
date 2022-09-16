@@ -12,9 +12,5 @@ const ImageGalleryItem = ({ src, alt, onClick, id, largeImageURL}) => {
 export default ImageGalleryItem;
 
 ImageGalleryItem.propTypes = {
-    src: PropTypes.string.isRequired,
-    alt: PropTypes.string,
     onClick: PropTypes.func, 
-    id: PropTypes.number.isRequired, 
-    largeImageURL: PropTypes.string.isRequired
 }

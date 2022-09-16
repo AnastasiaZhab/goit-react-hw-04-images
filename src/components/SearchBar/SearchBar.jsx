@@ -35,8 +35,8 @@ export default function SearchBar({ onSubmit }) {
                     <input
                         className={s.Input}
                         type="text"
-                        autocomplete="off"
-                        autofocus
+                        autoComplete="off"
+                        autoFocus
                         value={imageName}
                         placeholder="Search images and photos"
                         onChange={handleNameChange}
@@ -50,5 +50,5 @@ export default function SearchBar({ onSubmit }) {
 
 
 SearchBar.propTypes = {
-    imageName: PropTypes.string.isRequired,
+    onSubmit: PropTypes.func.isRequired
 }
