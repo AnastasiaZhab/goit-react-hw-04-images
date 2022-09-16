@@ -52,6 +52,7 @@ export default function App() {
   };
 
   const toggleModal = () => {
+    console.log(showModal);
     setShowModal(!showModal);
     console.log("showModal: ", showModal);
     // this.setState(({ showModal }) => ({
@@ -60,9 +61,8 @@ export default function App() {
   };
 
   const findID = (largeImgURL) => {
-    setIdImage(largeImgURL);
     toggleModal();
-    // this.setState({ idImage: largeImgURL });
+    setIdImage(largeImgURL);
   };
 
   return (
