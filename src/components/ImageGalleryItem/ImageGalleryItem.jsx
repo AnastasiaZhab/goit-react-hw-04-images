@@ -1,16 +1,27 @@
 import s from './ImageGalleryItem.module.css';
+import { useState  } from 'react';
 import PropTypes from 'prop-types';
+import Modal from '../Modal';
 
-const ImageGalleryItem = ({ src, alt, onClick, id, largeImageURL}) => {
+export default function ImageGalleryItem ({ src, alt, id, largeImageURL}) {
+    const [showModal, setShowModal] = useState(false)
 
-    return (<li className={s.ImageGalleryItem}>
-        <img onClick={() => onClick(largeImageURL)} id={id} className={s.Image} src={src} alt={alt}/>
+    return (
+    <>
+        <li className={s.ImageGalleryItem}>
+           <img onClick={() => setShowModal(true)} id={id} className={s.Image} src={src} alt={alt}/>
         </li>
+        {showModal && (<Modal onClose={() => setShowModal(false)}>
+                         <img src={largeImageURL} alt={alt}/>
+                       </Modal>)}
+    </>
         )
 };
 
-export default ImageGalleryItem;
-
 ImageGalleryItem.propTypes = {
+    id: PropTypes.number.isRequired,
+    largeImageURL: PropTypes.string,
+    alt: PropTypes.string,
+    src: PropTypes.string,
     onClick: PropTypes.func, 
 }
