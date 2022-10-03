@@ -23,5 +23,4 @@ export default ImageGallery;
 
 ImageGallery.propTypes = {
     image: PropTypes.array,
-    onClick: PropTypes.func,
 }

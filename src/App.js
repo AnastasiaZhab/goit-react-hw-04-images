@@ -6,7 +6,6 @@ import SearchBar from "./components/SearchBar";
 import ImageGallery from "./components/ImageGallery";
 import { Oval } from "react-loader-spinner";
 import Button from "./components/Button";
-// import Modal from "./components/Modal";
 
 export default function App() {
   const [image, setImage] = useState([]);
@@ -16,7 +15,6 @@ export default function App() {
   const [isVisible, setIsVisible] = useState(false);
   const [status, setStatus] = useState("idle");
   const [errorMessage, setErrorMessage] = useState(null);
-  // const [showModal, setShowModal] = useState(false);
 
   const perPage = 12;
 
@@ -32,11 +30,6 @@ export default function App() {
         setStatus("resolved");
         setImage((prevState) => [...prevState, ...image.hits]);
         setIsVisible(limitPage);
-        // this.setState({ status: "resolved" });
-        // this.setState((prevState) => ({
-        //   image: [...prevState.image, ...image.hits],
-        //   isVisible: limitPage,
-        // }));
       })
       .catch((error) => setErrorMessage(error));
   }, [imageName, page]);
@@ -51,19 +44,6 @@ export default function App() {
     setPage((prev) => prev + 1);
   };
 
-  // const toggleModal = () => {
-    // console.log(showModal);
-    // setShowModal(!showModal);
-    // console.log("showModal: ", showModal);
-    // this.setState(({ showModal }) => ({
-    //   showModal: !showModal,
-    // }));
-  // };
-
-  // const findID = (largeImgURL) => {
-  //   // toggleModal();
-  //   setIdImage(largeImgURL);
-  // };
 
   return (
     <div className="div">
@@ -83,11 +63,6 @@ export default function App() {
       )}
       {image && <ImageGallery image={image} />}
       {isVisible && <Button onClick={handleLoadMore} />}
-      {/* {showModal && (
-        <Modal onClose={toggleModal}>
-          <img src={idImage} alt="" />
-        </Modal>
-      )} */}
     </div>
   );
 }

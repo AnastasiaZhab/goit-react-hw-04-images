@@ -23,5 +23,4 @@ ImageGalleryItem.propTypes = {
     largeImageURL: PropTypes.string,
     alt: PropTypes.string,
     src: PropTypes.string,
-    onClick: PropTypes.func, 
 }
