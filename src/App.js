@@ -35,6 +35,7 @@ export default function App() {
   }, [imageName, page]);
 
   const handleFormSubmit = (imageName) => {
+    setPage(1);
     setImageName(imageName);
     setImage([]);
     setIsVisible(false);
